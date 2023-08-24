@@ -6,11 +6,12 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 14:56:18 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/24 16:17:34 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/08/24 19:37:30 by nicolas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#ifndef BUREAUCRAT_HPP
-# define BUREAUCRAT_HPP
+#pragma once
+
+# include "Exceptions.hpp"
 
 # include <iostream>
 # include <string>
@@ -55,4 +56,4 @@ class	Bureaucrat
 		// Setter functions
 };
 
-#endif
+std::ostream	&operator<<(std::ostream &os, const Bureaucrat &bureaucrat);
