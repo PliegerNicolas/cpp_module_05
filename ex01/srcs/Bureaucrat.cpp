@@ -6,10 +6,11 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:00:28 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/25 15:31:20 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/08/25 15:27:38 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 /* Constructors & Destructors */
 
@@ -85,6 +86,24 @@ void	Bureaucrat::decrementGrade(void)
 }
 
 /* Public */
+
+void	Bureaucrat::signForm(Form &form) const
+{
+	try
+	{
+		form.beSigned(*this);
+		std::cout << "\033[36;2m";
+		std::cout << _name << " successfully signed " << form.getName();
+		std::cout << "\033[0m" << std::endl;
+	}
+	catch (const std::exception &exception)
+	{
+		std::cout << "\033[31;2m";
+		std::cout << _name << " couldn't sign " << form.getName();
+		std::cout << " due too => " << exception.what();
+		std::cout << "\033[0m" << std::endl;
+	}
+}
 
 // Getter functions
 
