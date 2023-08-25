@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 14:56:18 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/24 19:37:30 by nicolas          ###   ########.fr       */
+/*   Updated: 2023/08/25 12:48:12 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #pragma once
@@ -48,12 +48,17 @@ class	Bureaucrat
 
 		/* Member functions */
 
+		void				incrementGrade(void);
+		void				decrementGrade(void);
+
 		// Getter functions
 
 		const std::string	getName(void) const;
 		int					getGrade(void) const;
 
 		// Setter functions
+
+		void				setGrade(const int grade);
 };
 
 std::ostream	&operator<<(std::ostream &os, const Bureaucrat &bureaucrat);

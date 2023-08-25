@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:00:28 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/24 19:39:29 by nicolas          ###   ########.fr       */
+/*   Updated: 2023/08/25 12:49:46 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "Bureaucrat.hpp"
@@ -70,6 +70,20 @@ std::ostream	&operator<<(std::ostream &os, const Bureaucrat &bureaucrat)
 
 /* Member Functions */
 
+void	Bureaucrat::incrementGrade(void)
+{
+	if (_grade - 1 < 1)
+		throw GradeTooHighException();
+	(_grade)--;
+}
+
+void	Bureaucrat::decrementGrade(void)
+{
+	if (_grade + 1 > 150)
+		throw GradeTooLowException();
+	(_grade)++;
+}
+
 /* Public */
 
 // Getter functions
@@ -85,5 +99,14 @@ int	Bureaucrat::getGrade(void) const
 }
 
 // Setter functions
+
+void	Bureaucrat::setGrade(const int grade)
+{
+	if (grade < 1)
+		throw GradeTooHighException();
+	else if (grade > 150)
+		throw GradeTooLowException();
+	_grade = grade;
+}
 
 /* Private */
