@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 13:08:52 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/25 16:13:21 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/08/26 14:54:26 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "AForm.hpp"
@@ -72,12 +72,12 @@ AForm::~AForm(void)
 	std::cout << "\033[0m" << std::endl;
 }
 
-std::ostream	&operator<<(std::ostream &os, const AForm &form)
+std::ostream	&operator<<(std::ostream &os, const AForm &aform)
 {
-	os << "Name : " << form.getName() << std::endl;
-	os << "- Required grade to sign : " << form.getRequiredGradeToSign() << std::endl;
-	os << "- Required grade to execute : " << form.getRequiredGradeToExec() << std::endl;
-	os << "- Is signed : " << (form.getSignature() ? "true" : "false");
+	os << "Name : " << aform.getName() << std::endl;
+	os << "- Required grade to sign : " << aform.getRequiredGradeToSign() << std::endl;
+	os << "- Required grade to execute : " << aform.getRequiredGradeToExec() << std::endl;
+	os << "- Is signed : " << (aform.getSignature() ? "true" : "false");
 	return (os);
 }
 
