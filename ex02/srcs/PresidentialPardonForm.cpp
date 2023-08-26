@@ -6,13 +6,13 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 15:20:42 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/26 15:20:45 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/08/26 15:24:37 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "PresidentialPardonForm.hpp"
 
 PresidentialPardonForm::PresidentialPardonForm(void):
-	AForm("Default shrubbery creation form", 145, 137),
+	AForm("PresidentialPardonForm", 25, 5),
 	_target_file("unknown")
 {
 	std::cout << "\033[36;2m";
@@ -21,7 +21,7 @@ PresidentialPardonForm::PresidentialPardonForm(void):
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const std::string target_file):
-	AForm("Default shrubbery creation form", 145, 137),
+	AForm("DefaultFresidentialPardon form", 25, 5),
 	_target_file(target_file)
 {
 	std::cout << "\033[36;2m";

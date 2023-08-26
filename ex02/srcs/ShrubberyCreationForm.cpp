@@ -6,13 +6,13 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 15:01:48 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/26 15:16:05 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/08/26 15:25:12 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ShrubberyCreationForm.hpp"
 
 ShrubberyCreationForm::ShrubberyCreationForm(void):
-	AForm("Default shrubbery creation form", 145, 137),
+	AForm("ShrubberyCreationForm", 145, 137),
 	_target_file("unknown")
 {
 	std::cout << "\033[36;2m";
@@ -21,7 +21,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(void):
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string target_file):
-	AForm("Default shrubbery creation form", 145, 137),
+	AForm("ShrubberyCreationForm", 145, 137),
 	_target_file(target_file)
 {
 	std::cout << "\033[36;2m";

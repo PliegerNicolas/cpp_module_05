@@ -6,13 +6,13 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 15:18:04 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/26 15:18:23 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/08/26 15:24:53 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "RobotomyRequestForm.hpp"
 
 RobotomyRequestForm::RobotomyRequestForm(void):
-	AForm("Default shrubbery creation form", 145, 137),
+	AForm("RobotomyRequestForm", 72, 45),
 	_target_file("unknown")
 {
 	std::cout << "\033[36;2m";
@@ -21,7 +21,7 @@ RobotomyRequestForm::RobotomyRequestForm(void):
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const std::string target_file):
-	AForm("Default shrubbery creation form", 145, 137),
+	AForm("DefaultRobotomyRequest form", 72, 45),
 	_target_file(target_file)
 {
 	std::cout << "\033[36;2m";
