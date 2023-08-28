@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:00:28 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/28 12:11:54 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/08/28 14:36:24 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "Bureaucrat.hpp"
@@ -98,8 +98,8 @@ void	Bureaucrat::signForm(AForm &form) const
 	catch (const std::exception &exception)
 	{
 		std::cout << "\033[31;2m";
-		std::cout << _name << " couldn't sign " << form.getName() << std::endl;
-		std::cout << exception.what() << "\033[0m" << std::endl;
+		std::cout << _name << " couldn't sign " << form.getName() << "\033[0m" << std::endl;
+		std::cout << exception.what() << std::endl;
 	}
 }
 
@@ -115,8 +115,8 @@ void	Bureaucrat::executeForm(AForm const &form)
 	catch (const std::exception &exception)
 	{
 		std::cout << "\033[31;2m";
-		std::cout << _name << " couldn't execute " << form.getName() << std::endl;
-		std::cout << exception.what() << "\033[0m" << std::endl;
+		std::cout << _name << " couldn't execute " << form.getName() << "\033[0m" << std::endl;
+		std::cout << exception.what() << std::endl;
 	}
 }
 
