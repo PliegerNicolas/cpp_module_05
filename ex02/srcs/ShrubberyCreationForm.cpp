@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 15:01:48 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/28 14:48:15 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/08/28 15:14:46 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ShrubberyCreationForm.hpp"
@@ -80,18 +80,28 @@ void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 	std::string		filename;
 	std::ofstream	outfile;
 
-	AForm::checkExecute(executor);
-	filename = _target + "_shrubbery";
 	try
 	{
-		outfile.open(filename.c_str());
-		draw_tree(outfile);
-		outfile.close();
-		std::cout << filename << " created" << std::endl;
+		AForm::checkExecute(executor);
+		filename = _target + "_shrubbery";
+		try
+		{
+			outfile.open(filename.c_str());
+			draw_tree(outfile);
+			outfile.close();
+			std::cout << "॰ " << filename << " created" << std::endl;
+		}
+		catch (const std::ofstream::failure &exception)
+		{
+			std::cerr << "Error: " << exception.what() << std::endl;
+		}
 	}
-	catch (const std::ofstream::failure &exception)
+	catch (const std::exception &exception)
 	{
-		std::cerr << "Error: " << exception.what() << std::endl;
+		std::cerr << "\033[31;2m";
+		std::cerr << executor.getName() << " couldn't execute " << getName();
+		std::cerr << "\033[0m" << std::endl;
+		std::cerr << exception.what() << std::endl;
 	}
 }
 

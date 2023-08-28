@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 15:18:04 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/28 14:47:58 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/08/28 15:14:28 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "RobotomyRequestForm.hpp"
@@ -63,12 +63,21 @@ RobotomyRequestForm::~RobotomyRequestForm(void)
 
 void	RobotomyRequestForm::execute(Bureaucrat const &executor) const
 {
-	AForm::checkExecute(executor);
-
-	std::cout << "Brrzmmmm ... Brrrkrrmmmzzzz ... Vrmmkrmmbmm" << std::endl;
-	std::cout << _target << "'s robotomy has ";
-	std::srand(std::time(0));
-	std::cout << (std::rand() % 2 ? "succeeded" : "failed") << std::endl;
+	try
+	{
+		AForm::checkExecute(executor);
+		std::cout << "॰ Brrzmmmm ... Brrrkrrmmmzzzz ... Vrmmkrmmbmm" << std::endl;
+		std::cout << _target << "'s robotomy has ";
+		std::srand(std::time(0));
+		std::cout << (std::rand() % 2 ? "succeeded" : "failed") << std::endl;
+	}
+	catch (const std::exception &exception)
+	{
+		std::cerr << "\033[31;2m";
+		std::cerr << executor.getName() << " couldn't execute " << getName();
+		std::cerr << "\033[0m" << std::endl;
+		std::cerr << exception.what() << std::endl;
+	}
 }
 
 // Getter functions

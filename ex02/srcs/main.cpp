@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 14:55:37 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/28 14:38:26 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/08/28 15:03:40 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "Bureaucrat.hpp"
@@ -15,14 +15,13 @@
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
 
-static void	testSignatureAndExecution(const std::string name, const int grade)
+static void	testSignatureAndExecution(Bureaucrat &bureaucrat)
 {
 	std::cout << std::endl;
 
-	std::cout << "\033[32;4m" << name << ", grade = " << grade << " :" << "\033[0m" << std::endl;
-	try
-	{
-		Bureaucrat				bureaucrat(name, grade);
+	std::cout << "\033[32;4m" << bureaucrat << " :" << "\033[0m" << std::endl;
+	//try
+	//{
 		PresidentialPardonForm	pform("Paul");
 		RobotomyRequestForm		rform("Stephane");
 		ShrubberyCreationForm	sform("forest");
@@ -39,22 +38,29 @@ static void	testSignatureAndExecution(const std::string name, const int grade)
 		pform.execute(bureaucrat);
 		rform.execute(bureaucrat);
 		sform.execute(bureaucrat);
+	/*
 	}
 	catch (std::exception &exception)
 	{
 		std::cerr << exception.what() << std::endl;
 	}
+	*/
 	std::cout << std::endl;
 }
 
 int	main(void)
 {
-	testSignatureAndExecution("Yoru", 1);
-	testSignatureAndExecution("Juliette", 25);
-	testSignatureAndExecution("Robert", 50);
-	testSignatureAndExecution("Stephane", 100);
-	testSignatureAndExecution("Pauline", 150);
-	testSignatureAndExecution("Kilimanjaro", 200);
+	Bureaucrat	yoru("Yoru", 1);
+	Bureaucrat	juliette("Juliette", 25);
+	Bureaucrat	robert("Robert", 50);
+	Bureaucrat	stephane("Stephane", 100);
+	Bureaucrat	pauline("Pauline", 150);
+
+	testSignatureAndExecution(yoru);
+	testSignatureAndExecution(juliette);
+	testSignatureAndExecution(robert);
+	testSignatureAndExecution(stephane);
+	testSignatureAndExecution(pauline);
 
 	return (0);
 }

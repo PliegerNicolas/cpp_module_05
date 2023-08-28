@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:00:28 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/28 14:36:24 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/08/28 15:10:20 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "Bureaucrat.hpp"
@@ -97,27 +97,15 @@ void	Bureaucrat::signForm(AForm &form) const
 	}
 	catch (const std::exception &exception)
 	{
-		std::cout << "\033[31;2m";
-		std::cout << _name << " couldn't sign " << form.getName() << "\033[0m" << std::endl;
-		std::cout << exception.what() << std::endl;
+		std::cerr << "\033[31;2m";
+		std::cerr << _name << " couldn't sign " << form.getName() << "\033[0m" << std::endl;
+		std::cerr << exception.what() << std::endl;
 	}
 }
 
 void	Bureaucrat::executeForm(AForm const &form)
 {
-	try
-	{
-		form.execute(*this);
-		std::cout << "\033[37;2m";
-		std::cout << _name << " executed " << form.getName();
-		std::cout << "\033[0m" << std::endl;
-	}
-	catch (const std::exception &exception)
-	{
-		std::cout << "\033[31;2m";
-		std::cout << _name << " couldn't execute " << form.getName() << "\033[0m" << std::endl;
-		std::cout << exception.what() << std::endl;
-	}
+	form.execute(*this);
 }
 
 
