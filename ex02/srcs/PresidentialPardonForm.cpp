@@ -6,23 +6,23 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 15:20:42 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/26 15:24:37 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/08/28 12:07:03 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "PresidentialPardonForm.hpp"
 
 PresidentialPardonForm::PresidentialPardonForm(void):
 	AForm("PresidentialPardonForm", 25, 5),
-	_target_file("unknown")
+	_target("unknown")
 {
 	std::cout << "\033[36;2m";
 	std::cout << "PresidentialPardonForm : Default constructor called";
 	std::cout << "\033[0m" << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(const std::string target_file):
-	AForm("DefaultFresidentialPardon form", 25, 5),
-	_target_file(target_file)
+PresidentialPardonForm::PresidentialPardonForm(const std::string target):
+	AForm("PresidentialPardonForm", 25, 5),
+	_target(target)
 {
 	std::cout << "\033[36;2m";
 	std::cout << "PresidentialPardonForm : constructor with name parameter called";
@@ -31,7 +31,7 @@ PresidentialPardonForm::PresidentialPardonForm(const std::string target_file):
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &other):
 	AForm(other),
-	_target_file(other._target_file)
+	_target(other._target)
 {
 	std::cout << "\033[36;2m";
 	std::cout << "PresidentialPardonForm : Copy constructor called";
@@ -60,6 +60,16 @@ PresidentialPardonForm::~PresidentialPardonForm(void)
 
 /* Member Functions */
 /* Public */
+
+void	PresidentialPardonForm::execute(Bureaucrat const &executor) const
+{
+	if (getSignature() == false)
+		throw UnsignedFormException("PresidentialPardonForm");
+	else if (executor.getGrade() > getRequiredGradeToExec())
+		throw UnauthorizedFormExecutionException("PresidentialPardonForm");
+
+	std::cout << _target << " has been pardoned by Zaphod Beeblebrox" << std::endl;
+}
 
 // Getter functions
 

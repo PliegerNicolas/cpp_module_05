@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:00:28 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/28 10:35:04 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/08/28 12:11:54 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "Bureaucrat.hpp"
@@ -70,6 +70,7 @@ std::ostream	&operator<<(std::ostream &os, const Bureaucrat &bureaucrat)
 }
 
 /* Member Functions */
+/* Public */
 
 void	Bureaucrat::incrementGrade(void)
 {
@@ -85,25 +86,40 @@ void	Bureaucrat::decrementGrade(void)
 	(_grade)++;
 }
 
-/* Public */
-
 void	Bureaucrat::signForm(AForm &form) const
 {
 	try
 	{
 		form.beSigned(*this);
-		std::cout << "\033[36;2m";
+		std::cout << "\033[37;2m";
 		std::cout << _name << " successfully signed " << form.getName();
 		std::cout << "\033[0m" << std::endl;
 	}
 	catch (const std::exception &exception)
 	{
 		std::cout << "\033[31;2m";
-		std::cout << _name << " couldn't sign " << form.getName();
-		std::cout << " due too => " << exception.what();
-		std::cout << "\033[0m" << std::endl;
+		std::cout << _name << " couldn't sign " << form.getName() << std::endl;
+		std::cout << exception.what() << "\033[0m" << std::endl;
 	}
 }
+
+void	Bureaucrat::executeForm(AForm const &form)
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << "\033[37;2m";
+		std::cout << _name << " executed " << form.getName();
+		std::cout << "\033[0m" << std::endl;
+	}
+	catch (const std::exception &exception)
+	{
+		std::cout << "\033[31;2m";
+		std::cout << _name << " couldn't execute " << form.getName() << std::endl;
+		std::cout << exception.what() << "\033[0m" << std::endl;
+	}
+}
+
 
 // Getter functions
 

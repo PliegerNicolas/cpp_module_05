@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 13:04:18 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/28 10:27:25 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/08/28 10:46:49 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #pragma once
@@ -57,12 +57,13 @@ class	AForm
 
 		void				beSigned(const Bureaucrat &bureaucrat);
 
-		// Getters
-		const std::string	getName(void) const;
-		int					getRequiredGradeToSign(void) const;
-		int					getRequiredGradeToExec(void) const;
-		bool				getSignature(void) const;
+		virtual void		execute(Bureaucrat const &executor) const = 0;
 
+		// Getters
+		const std::string	&getName(void) const;
+		const int			&getRequiredGradeToSign(void) const;
+		const int			&getRequiredGradeToExec(void) const;
+		const bool			&getSignature(void) const;
 };
 
 std::ostream	&operator<<(std::ostream &os, const AForm &aform);

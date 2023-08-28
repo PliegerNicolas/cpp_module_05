@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 13:08:52 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/28 10:30:05 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/08/28 10:44:48 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "Form.hpp"
@@ -95,22 +95,22 @@ void	Form::beSigned(const Bureaucrat &bureaucrat)
 
 // Getter functions
 
-const std::string	Form::getName(void) const
+const std::string	&Form::getName(void) const
 {
 	return (_name);
 }
 
-int	Form::getRequiredGradeToSign(void) const
+const int	&Form::getRequiredGradeToSign(void) const
 {
 	return (_required_grade_to_sign);
 }
 
-int	Form::getRequiredGradeToExec(void) const
+const int	&Form::getRequiredGradeToExec(void) const
 {
 	return (_required_grade_to_exec);
 }
 
-bool	Form::getSignature(void) const
+const bool	&Form::getSignature(void) const
 {
 	return (_is_signed);
 }

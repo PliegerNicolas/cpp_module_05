@@ -6,23 +6,23 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 15:18:04 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/26 15:24:53 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/08/28 12:07:13 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "RobotomyRequestForm.hpp"
 
 RobotomyRequestForm::RobotomyRequestForm(void):
 	AForm("RobotomyRequestForm", 72, 45),
-	_target_file("unknown")
+	_target("unknown")
 {
 	std::cout << "\033[36;2m";
 	std::cout << "RobotomyRequestForm : Default constructor called";
 	std::cout << "\033[0m" << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const std::string target_file):
-	AForm("DefaultRobotomyRequest form", 72, 45),
-	_target_file(target_file)
+RobotomyRequestForm::RobotomyRequestForm(const std::string target):
+	AForm("RobotomyRequestForm", 72, 45),
+	_target(target)
 {
 	std::cout << "\033[36;2m";
 	std::cout << "RobotomyRequestForm : constructor with name parameter called";
@@ -31,7 +31,7 @@ RobotomyRequestForm::RobotomyRequestForm(const std::string target_file):
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &other):
 	AForm(other),
-	_target_file(other._target_file)
+	_target(other._target)
 {
 	std::cout << "\033[36;2m";
 	std::cout << "RobotomyRequestForm : Copy constructor called";
@@ -60,6 +60,19 @@ RobotomyRequestForm::~RobotomyRequestForm(void)
 
 /* Member Functions */
 /* Public */
+
+void	RobotomyRequestForm::execute(Bureaucrat const &executor) const
+{
+	if (getSignature() == false)
+		throw UnsignedFormException("RobotomyRequestForm");
+	else if (executor.getGrade() > getRequiredGradeToExec())
+		throw UnauthorizedFormExecutionException("RobotomyRequestForm");
+
+	std::cout << "Brrzmmmm ... Brrrkrrmmmzzzz ... Vrmmkrmmbmm" << std::endl;
+	std::cout << _target << "'s robotomy has ";
+	std::srand(std::time(0));
+	std::cout << (std::rand() % 2 ? "succeeded" : "failed") << std::endl;
+}
 
 // Getter functions
 

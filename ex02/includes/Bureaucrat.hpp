@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 14:56:18 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/28 10:34:37 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/08/28 12:03:14 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #pragma once
@@ -57,6 +57,7 @@ class	Bureaucrat
 		void				decrementGrade(void);
 
 		void				signForm(AForm &form) const;
+		void				executeForm(AForm const &form);
 
 		// Getter functions
 

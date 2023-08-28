@@ -6,18 +6,19 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 14:57:50 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/26 15:21:43 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/08/28 11:04:05 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #pragma once
 
+# include "Bureaucrat.hpp"
 # include "AForm.hpp"
 
 class	PresidentialPardonForm: public AForm
 {
 	private:
 		/* Attributs */
-		const std::string	_target_file;
+		const std::string	_target;
 
 		/* Constructors & Destructors */
 
@@ -35,7 +36,7 @@ class	PresidentialPardonForm: public AForm
 
 		/* Constructors & Destructors */
 		PresidentialPardonForm(void);
-		PresidentialPardonForm(const std::string target_file);
+		PresidentialPardonForm(const std::string target);
 
 		PresidentialPardonForm(const PresidentialPardonForm &other);
 		PresidentialPardonForm	&operator=(const PresidentialPardonForm &other);
@@ -43,5 +44,7 @@ class	PresidentialPardonForm: public AForm
 		virtual ~PresidentialPardonForm(void);
 
 		/* Member functions */
+
+		virtual void		execute(Bureaucrat const &executor) const;
 };
 
