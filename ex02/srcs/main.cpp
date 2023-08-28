@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 14:55:37 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/28 15:16:11 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/08/28 15:18:26 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "Bureaucrat.hpp"
@@ -45,16 +45,18 @@ static void	testSignatureAndExecution(Bureaucrat &bureaucrat)
 int	main(void)
 {
 	Bureaucrat	yoru("Yoru", 1);
-	Bureaucrat	juliette("Juliette", 25);
-	Bureaucrat	robert("Robert", 50);
-	Bureaucrat	stephane("Stephane", 100);
-	Bureaucrat	pauline("Pauline", 150);
+	Bureaucrat	juliette("Juliette", 10);
+	Bureaucrat	robert("Robert", 45);
+	Bureaucrat	stephane("Stephane", 72);
+	Bureaucrat	pauline("Pauline", 137);
+	Bureaucrat	michael("Pauline", 150);
 
 	testSignatureAndExecution(yoru);
 	testSignatureAndExecution(juliette);
 	testSignatureAndExecution(robert);
 	testSignatureAndExecution(stephane);
 	testSignatureAndExecution(pauline);
+	testSignatureAndExecution(michael);
 
 	return (0);
 }
