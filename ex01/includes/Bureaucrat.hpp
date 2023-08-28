@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 14:56:18 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/25 13:49:17 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/08/28 10:32:43 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #pragma once
@@ -24,6 +24,9 @@ class	Bureaucrat
 		/* Attributs */
 		const std::string	_name;
 		int					_grade;
+
+		static const int	_max_grade = 1;
+		static const int	_min_grade = 150;
 
 		/* Constructors & Destructors */
 

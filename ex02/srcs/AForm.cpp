@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 13:08:52 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/26 14:54:26 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/08/28 10:28:05 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "AForm.hpp"
@@ -35,9 +35,11 @@ AForm::AForm(const std::string name, const int required_grade_to_sign,
 ired_grade_to_exec parameter called";
 	std::cout << "\033[0m" << std::endl;
 
-	if (required_grade_to_sign < 1 || required_grade_to_exec < 1)
+	if (required_grade_to_sign < _max_grade
+		|| required_grade_to_exec < _max_grade)
 		throw GradeTooHighException("AForm");
-	else if (required_grade_to_sign > 150 || required_grade_to_sign > 150)
+	else if (required_grade_to_sign > _min_grade
+		|| required_grade_to_sign > _min_grade)
 		throw GradeTooLowException("AForm");
 }
 

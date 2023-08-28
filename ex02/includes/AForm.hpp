@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 13:04:18 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/26 15:31:26 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/08/28 10:27:25 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #pragma once
@@ -26,6 +26,8 @@ class	AForm
 		const int			_required_grade_to_sign;
 		const int			_required_grade_to_exec;
 		bool				_is_signed;
+		static const int	_max_grade = 1;
+		static const int	_min_grade = 150;
 
 		/* Constructors & Destructors */
 
