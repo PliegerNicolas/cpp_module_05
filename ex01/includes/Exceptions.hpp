@@ -22,7 +22,8 @@ class GradeTooHighException : public std::exception
 	public:
 		GradeTooHighException(const char* className)
 		{
-			_errorMessage = className + std::string("::exception") + " : Grade is too high";
+			_errorMessage = className + std::string("::exception : ")
+				+ "Grade is too high";
 		}
 
 	virtual const char* what() const throw()
@@ -39,7 +40,8 @@ class GradeTooLowException : public std::exception
 	public:
 		GradeTooLowException(const char* className)
 		{
-			_errorMessage = className + std::string("::exception") +  " : Grade is too low";
+			_errorMessage = className + std::string("::exception : ")
+				+ "Grade is too low";
 		}
 
 	virtual const char* what() const throw()

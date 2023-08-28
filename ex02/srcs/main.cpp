@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 14:55:37 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/28 12:12:14 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/08/28 12:29:05 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "Bureaucrat.hpp"
@@ -15,30 +15,43 @@
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
 
+static void	testSignatureAndExecution(const std::string name, const int grade)
+{
+	std::cout << std::endl;
+
+	std::cout << "\033[32;4m" << name << ", grade = " << grade << " :" << "\033[0m" << std::endl;
+	try
+	{
+		Bureaucrat				bureaucrat(name, grade);
+		PresidentialPardonForm	pform("Paul");
+		RobotomyRequestForm		rform("Stephane");
+		ShrubberyCreationForm	sform("forest");
+
+		bureaucrat.signForm(pform);
+		bureaucrat.signForm(rform);
+		bureaucrat.signForm(sform);
+		bureaucrat.executeForm(pform);
+		bureaucrat.executeForm(rform);
+		bureaucrat.executeForm(sform);
+		pform.execute(bureaucrat);
+		rform.execute(bureaucrat);
+		sform.execute(bureaucrat);
+	}
+	catch (std::exception &exception)
+	{
+		std::cerr << exception.what() << std::endl;
+	}
+	std::cout << std::endl;
+}
+
 int	main(void)
 {
-	{
-		std::cout << "\033[35mCreate invalid Bureaucrat\033[0m" << std::endl;
-		try
-		{
-			Bureaucrat				paul("Paul", 50);
-			PresidentialPardonForm	pform("Paul");
-			RobotomyRequestForm		rform("Stephane");
-			ShrubberyCreationForm	sform("tree");
-
-			paul.signForm(pform);
-			paul.signForm(rform);
-			paul.signForm(sform);
-			paul.executeForm(pform);
-			paul.executeForm(rform);
-			paul.executeForm(sform);
-			sform.execute(paul);
-		}
-		catch (std::exception &exception)
-		{
-			std::cerr << exception.what() << std::endl;
-		}
-	}
+	testSignatureAndExecution("Yoru", 1);
+	testSignatureAndExecution("Juliette", 25);
+	testSignatureAndExecution("Robert", 50);
+	testSignatureAndExecution("Stephane", 100);
+	testSignatureAndExecution("Pauline", 150);
+	testSignatureAndExecution("Kilimanjaro", 200);
 
 	return (0);
 }
