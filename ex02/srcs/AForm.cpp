@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 13:08:52 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/28 10:47:13 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/08/28 14:46:30 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "AForm.hpp"
@@ -91,6 +91,14 @@ void	AForm::beSigned(const Bureaucrat &bureaucrat)
 	if (bureaucrat.getGrade() > _required_grade_to_sign)
 		throw GradeTooLowException("AForm");
 	_is_signed = true;
+}
+
+void	AForm::checkExecute(const Bureaucrat &executor) const
+{
+	if (getSignature() == false)
+		throw UnsignedFormException(getName().c_str());
+	else if (executor.getGrade() > getRequiredGradeToExec())
+		throw UnauthorizedFormExecutionException(getName().c_str());
 }
 
 // Getter functions

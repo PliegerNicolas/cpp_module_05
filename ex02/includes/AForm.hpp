@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 13:04:18 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/28 10:46:49 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/08/28 14:42:21 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #pragma once
@@ -57,6 +57,7 @@ class	AForm
 
 		void				beSigned(const Bureaucrat &bureaucrat);
 
+		void				checkExecute(Bureaucrat const &executor) const;
 		virtual void		execute(Bureaucrat const &executor) const = 0;
 
 		// Getters

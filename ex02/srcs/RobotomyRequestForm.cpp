@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 15:18:04 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/28 12:07:13 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/08/28 14:47:58 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "RobotomyRequestForm.hpp"
@@ -63,10 +63,7 @@ RobotomyRequestForm::~RobotomyRequestForm(void)
 
 void	RobotomyRequestForm::execute(Bureaucrat const &executor) const
 {
-	if (getSignature() == false)
-		throw UnsignedFormException("RobotomyRequestForm");
-	else if (executor.getGrade() > getRequiredGradeToExec())
-		throw UnauthorizedFormExecutionException("RobotomyRequestForm");
+	AForm::checkExecute(executor);
 
 	std::cout << "Brrzmmmm ... Brrrkrrmmmzzzz ... Vrmmkrmmbmm" << std::endl;
 	std::cout << _target << "'s robotomy has ";

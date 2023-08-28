@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 15:20:42 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/28 12:07:03 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/08/28 14:47:31 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "PresidentialPardonForm.hpp"
@@ -63,11 +63,7 @@ PresidentialPardonForm::~PresidentialPardonForm(void)
 
 void	PresidentialPardonForm::execute(Bureaucrat const &executor) const
 {
-	if (getSignature() == false)
-		throw UnsignedFormException("PresidentialPardonForm");
-	else if (executor.getGrade() > getRequiredGradeToExec())
-		throw UnauthorizedFormExecutionException("PresidentialPardonForm");
-
+	AForm::checkExecute(executor);
 	std::cout << _target << " has been pardoned by Zaphod Beeblebrox" << std::endl;
 }
 

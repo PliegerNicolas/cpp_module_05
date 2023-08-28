@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/26 15:01:48 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/28 12:08:35 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/08/28 14:48:15 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ShrubberyCreationForm.hpp"
@@ -80,12 +80,7 @@ void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 	std::string		filename;
 	std::ofstream	outfile;
 
-	if (getSignature() == false)
-		throw UnsignedFormException("ShrubberyCreationForm");
-	else if (executor.getGrade() > getRequiredGradeToExec())
-		throw UnauthorizedFormExecutionException("ShrubberyCreationForm");
-
-	(void)executor;
+	AForm::checkExecute(executor);
 	filename = _target + "_shrubbery";
 	try
 	{
