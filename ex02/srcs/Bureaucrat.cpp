@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:00:28 by nplieger          #+#    #+#             */
-/*   Updated: 2023/09/04 12:49:43 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/09/04 18:08:10 by nicolas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "Bureaucrat.hpp"
@@ -105,7 +105,21 @@ void	Bureaucrat::signForm(AForm &form) const
 
 void	Bureaucrat::executeForm(AForm const &form)
 {
-	form.execute(*this);
+	try
+	{
+		form.checkExecute(*this);
+		form.execute(*this);
+		std::cout << "\033[37;2m";
+		std::cout << getName() << " executed " << form.getName();
+		std::cout << "\033[0m" << std::endl;
+	}
+	catch (const std::exception &exception)
+	{
+		std::cerr << "\033[31;2m";
+		std::cerr << getName() << " couldn't execute " << form.getName();
+		std::cerr << "\033[0m" << std::endl;
+		std::cerr << exception.what() << std::endl;
+	}
 }
 
 
