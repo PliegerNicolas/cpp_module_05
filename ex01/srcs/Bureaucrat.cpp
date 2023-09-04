@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:00:28 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/28 10:32:23 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/09/04 12:45:18 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "Bureaucrat.hpp"
@@ -30,9 +30,9 @@ Bureaucrat::Bureaucrat(const std::string &name, int grade): _name(name)
 	std::cout << "\033[0m" << std::endl;
 
 	if (grade < _max_grade)
-		throw GradeTooHighException("Bureaucrat");
+		throw GradeTooHighException();
 	else if (grade > _min_grade)
-		throw GradeTooLowException("Bureaucrat");
+		throw GradeTooLowException();
 	_grade = grade;
 }
 
@@ -74,14 +74,14 @@ std::ostream	&operator<<(std::ostream &os, const Bureaucrat &bureaucrat)
 void	Bureaucrat::incrementGrade(void)
 {
 	if (_grade - 1 < _max_grade)
-		throw GradeTooHighException("Bureaucrat");
+		throw GradeTooHighException();
 	(_grade)--;
 }
 
 void	Bureaucrat::decrementGrade(void)
 {
 	if (_grade + 1 > _min_grade)
-		throw GradeTooLowException("Bureaucrat");
+		throw GradeTooLowException();
 	(_grade)++;
 }
 
@@ -122,9 +122,9 @@ int	Bureaucrat::getGrade(void) const
 void	Bureaucrat::setGrade(const int grade)
 {
 	if (grade < _max_grade)
-		throw GradeTooHighException("Bureaucrat");
+		throw GradeTooHighException();
 	else if (grade > _min_grade)
-		throw GradeTooLowException("Bureaucrat");
+		throw GradeTooLowException();
 	_grade = grade;
 }
 

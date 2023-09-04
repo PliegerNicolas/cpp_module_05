@@ -6,12 +6,10 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 14:56:18 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/28 10:32:43 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/09/04 12:46:06 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #pragma once
-
-# include "Exceptions.hpp"
 
 # include <iostream>
 # include <string>
@@ -66,6 +64,26 @@ class	Bureaucrat
 		// Setter functions
 
 		void				setGrade(const int grade);
+
+		// Exceptions
+
+		class GradeTooLowException : public std::exception
+		{
+			public:
+				virtual const char* what() const throw()
+				{
+					return ("Bureaucrat::exception : Grade is too low");
+				}
+		};
+
+		class GradeTooHighException : public std::exception
+		{
+			public:
+				virtual const char* what() const throw()
+				{
+					return ("Bureaucrat::exception : Grade is too high");
+				}
+		};
 };
 
 std::ostream	&operator<<(std::ostream &os, const Bureaucrat &bureaucrat);

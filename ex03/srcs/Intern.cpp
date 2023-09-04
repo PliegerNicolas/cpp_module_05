@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:24:44 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/28 16:47:45 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/09/04 12:57:20 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "Intern.hpp"
@@ -82,16 +82,16 @@ AForm	*Intern::makeForm(const std::string form_name,
 		{"presidential pardon", &createPresidentialPardonForm}
 	};
 
-	for (const FormTypeInfo &formType : formTypes)
+	for (size_t i = 0; i < sizeof(formTypes) / sizeof(formTypes[0]); ++i)
 	{
-		if (form_name == formType.name)
-			return (formType.constructor(form_target));
+		if (form_name == formTypes[i].name)
+			return (formTypes[i].constructor(form_target));
 	}
 
 	std::cerr << "\033[31m" << "Error: given form_name doesn't exist";
 	std::cerr << "\033[0m" << std::endl;
 
-	return (nullptr);
+	return (NULL);
 }
 
 // Getter functions

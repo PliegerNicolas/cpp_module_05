@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 14:55:37 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/28 16:34:46 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/08/28 15:18:26 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "Bureaucrat.hpp"
@@ -14,39 +14,49 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
-#include "Intern.hpp"
+
+static void	testSignatureAndExecution(Bureaucrat &bureaucrat)
+{
+	std::cout << std::endl;
+
+	std::cout << "\033[32;4m" << bureaucrat << " :" << "\033[0m" << std::endl;
+	PresidentialPardonForm	pform("Paul");
+	RobotomyRequestForm		rform("Stephane");
+	ShrubberyCreationForm	sform("forest");
+
+	std::cout << "\033[32m" << "Signing forms :" << "\033[0m" << std::endl;
+	bureaucrat.signForm(pform);
+	bureaucrat.signForm(rform);
+	bureaucrat.signForm(sform);
+
+	std::cout << "\033[32m" << "Bureaucrat executing forms :" << "\033[0m" << std::endl;
+	bureaucrat.executeForm(pform);
+	bureaucrat.executeForm(rform);
+	bureaucrat.executeForm(sform);
+
+	std::cout << "\033[32m" << "Forms being executed by bureaucrat :" << "\033[0m" << std::endl;
+	pform.execute(bureaucrat);
+	rform.execute(bureaucrat);
+	sform.execute(bureaucrat);
+
+	std::cout << std::endl;
+}
 
 int	main(void)
 {
-	Bureaucrat	meuseulbi("Meuseulbi", 30);
-	Intern		intern;
-	AForm		*forms[4];
+	Bureaucrat	yoru("Yoru", 1);
+	Bureaucrat	juliette("Juliette", 10);
+	Bureaucrat	robert("Robert", 45);
+	Bureaucrat	stephane("Stephane", 72);
+	Bureaucrat	pauline("Pauline", 137);
+	Bureaucrat	michael("Pauline", 150);
 
-	std::cout << std::endl;
-	std::cout << "Let the intern create the Shrubbery Creation form" << std::endl;
-	forms[0] = intern.makeForm("shrubbery creation", "Target1");
-	std::cout << std::endl;
-	std::cout << "Let the intern create the Robotomy Request form" << std::endl;
-	forms[1] = intern.makeForm("robotomy request", "Target2");
-	std::cout << std::endl;
-	std::cout << "Let the intern create the Presidential Pardon form" << std::endl;
-	forms[2] = intern.makeForm("presidential pardon", "Target3");
-	std::cout << std::endl;
-	std::cout << "Let the intern create the other form" << std::endl;
-	forms[3] = intern.makeForm("other", "Target4");
-	std::cout << std::endl;
+	testSignatureAndExecution(yoru);
+	testSignatureAndExecution(juliette);
+	testSignatureAndExecution(robert);
+	testSignatureAndExecution(stephane);
+	testSignatureAndExecution(pauline);
+	testSignatureAndExecution(michael);
 
-
-	for (size_t i = 0; i < 4; i++)
-	{
-		if (forms[i])
-		{
-			std::cout << *(forms[i]) << std::endl;
-			meuseulbi.signForm(*(forms[i]));
-			meuseulbi.executeForm(*(forms[i]));
-			delete forms[i];
-			std::cout << std::endl;
-		}
-	}
 	return (0);
 }

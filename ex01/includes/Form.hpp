@@ -6,12 +6,10 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 13:04:18 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/28 10:44:57 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/09/04 12:46:13 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #pragma once
-
-# include "Exceptions.hpp"
 
 # include <iostream>
 # include <string>
@@ -63,6 +61,25 @@ class	Form
 		const int			&getRequiredGradeToExec(void) const;
 		const bool			&getSignature(void) const;
 
+		// Exceptions
+
+		class GradeTooLowException : public std::exception
+		{
+			public:
+				virtual const char* what() const throw()
+				{
+					return ("Form::exception : Grade is too low");
+				}
+		};
+
+		class GradeTooHighException : public std::exception
+		{
+			public:
+				virtual const char* what() const throw()
+				{
+					return ("Form::exception : Grade is too high");
+				}
+		};
 };
 
 std::ostream	&operator<<(std::ostream &os, const Form &form);

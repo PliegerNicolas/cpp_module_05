@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 13:08:52 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/28 10:44:48 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/09/04 12:45:35 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "Form.hpp"
@@ -37,10 +37,10 @@ ired_grade_to_exec parameter called";
 
 	if (required_grade_to_sign < _max_grade
 		|| required_grade_to_exec < _max_grade)
-		throw GradeTooHighException("Form");
+		throw GradeTooHighException();
 	else if (required_grade_to_sign > _min_grade
 		|| required_grade_to_sign > _min_grade)
-		throw GradeTooLowException("Form");
+		throw GradeTooLowException();
 }
 
 Form::Form(const Form &other):
@@ -89,7 +89,7 @@ std::ostream	&operator<<(std::ostream &os, const Form &form)
 void	Form::beSigned(const Bureaucrat &bureaucrat)
 {
 	if (bureaucrat.getGrade() > _required_grade_to_sign)
-		throw GradeTooLowException("Form");
+		throw GradeTooLowException();
 	_is_signed = true;
 }
 
