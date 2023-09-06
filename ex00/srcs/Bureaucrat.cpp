@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:00:28 by nplieger          #+#    #+#             */
-/*   Updated: 2023/09/04 12:40:52 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/09/06 14:49:03 by nicolas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "Bureaucrat.hpp"
@@ -110,3 +110,15 @@ void	Bureaucrat::setGrade(const int grade)
 }
 
 /* Private */
+
+/* Exceptions */
+
+const char* Bureaucrat::GradeTooLowException::what() const throw()
+{
+	return ("Bureaucrat::exception : Grade is too low");
+}
+
+const char* Bureaucrat::GradeTooHighException::what() const throw()
+{
+	return ("Bureaucrat::exception : Grade is too high");
+}
