@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 13:08:52 by nplieger          #+#    #+#             */
-/*   Updated: 2023/09/04 12:45:35 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/09/06 14:53:40 by nicolas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "Form.hpp"
@@ -118,3 +118,15 @@ const bool	&Form::getSignature(void) const
 // Setter functions
 
 /* Private */
+
+/* Exceptions */
+
+const char* Form::GradeTooLowException::what() const throw()
+{
+	return ("Form::exception : Grade is too low");
+}
+
+const char* Form::GradeTooHighException::what() const throw()
+{
+	return ("Form::exception : Grade is too high");
+}
