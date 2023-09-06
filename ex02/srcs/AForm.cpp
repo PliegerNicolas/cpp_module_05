@@ -126,3 +126,25 @@ const bool	&AForm::getSignature(void) const
 // Setter functions
 
 /* Private */
+
+/* Exceptions */
+
+const char* AForm::GradeTooLowException::what() const throw()
+{
+	return ("Form::exception : Grade is too low");
+}
+
+const char* AForm::GradeTooHighException::what() const throw()
+{
+	return ("Form::exception : Grade is too high");
+}
+
+const char* AForm::UnsignedFormException::what() const throw()
+{
+	return ("AForm::exception : Form isn't signed");
+}
+
+const char* AForm::UnauthorizedFormExecutionException::what() const throw()
+{
+	return ("AForm::exception : Form execution not authorized, grade too low");
+}

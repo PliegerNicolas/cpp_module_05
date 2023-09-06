@@ -147,3 +147,15 @@ void	Bureaucrat::setGrade(const int grade)
 }
 
 /* Private */
+
+/* Exceptions */
+
+const char* Bureaucrat::GradeTooLowException::what() const throw()
+{
+	return ("Bureaucrat::exception : Grade is too low");
+}
+
+const char* Bureaucrat::GradeTooHighException::what() const throw()
+{
+	return ("Bureaucrat::exception : Grade is too high");
+}

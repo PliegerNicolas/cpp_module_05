@@ -69,37 +69,25 @@ class	AForm
 		class GradeTooLowException : public std::exception
 		{
 			public:
-				virtual const char* what() const throw()
-				{
-					return ("AForm::exception : Grade is too low");
-				}
+				virtual const char* what() const throw();
 		};
 
 		class GradeTooHighException : public std::exception
 		{
 			public:
-				virtual const char* what() const throw()
-				{
-					return ("AForm::exception : Grade is too high");
-				}
+				virtual const char* what() const throw();
 		};
 
 		class UnsignedFormException : public std::exception
 		{
 			public:
-				virtual const char* what() const throw()
-				{
-					return ("AForm::exception : Form isn't signed");
-				}
+				virtual const char* what() const throw();
 		};
 
 		class UnauthorizedFormExecutionException : public std::exception
 		{
 			public:
-				virtual const char* what() const throw()
-				{
-					return ("AForm::exception : Form execution not authorized, grade too low");
-				}
+				virtual const char* what() const throw();
 		};
 };
 
